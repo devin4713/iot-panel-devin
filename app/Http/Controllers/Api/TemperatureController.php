@@ -17,7 +17,7 @@ class TemperatureController extends Controller
     }
     function insertTemperature(Request $request){
         // 1. Menambil data request
-        $value = $request->temperature;
+        $value = $request->value;
         // 2. Menyimpan data request ke database
         $temperature = Temperature::create([
             'value' => $value
@@ -53,7 +53,8 @@ class TemperatureController extends Controller
         }
         $temperature->delete();
         return response()->json([
-            "message" => "Data temperature berhasil dihapus"
+            "message" => "Data temperature berhasil dihapus",
+            "data" => $temperature
         ], 200);
     }
 }
